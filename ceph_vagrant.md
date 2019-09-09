@@ -47,7 +47,9 @@ sudo blkid -o value -s TYPE /dev/sdb
 ########################################################################################
 
 ssh-keygen -f ~/.ssh/id_rsa -N ""
+
 for host in controller compute1 compute2 monitor ; do ssh-copy-id -i ~/.ssh/id_rsa.pub $host; done
+
 ```
 sudo tee -a ~/.ssh/config << EOF
 Host controller
@@ -70,6 +72,7 @@ sudo rpm -Uvh https://download.ceph.com/rpm-mimic/el7/noarch/ceph-release-1-1.el
 sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo yum update -y && sudo yum install ceph-deploy python2-pip  -y
 sudo yum install -y leveldb-1.12.0-11.el7.x86_64.rpm
+
 ```
 
 mkdir ceph_cluster
@@ -101,4 +104,5 @@ ceph-deploy osd create --data /dev/sdb compute2
 ssh monitor
 sudo ceph health
 sudo ceph -s
+
 ```
