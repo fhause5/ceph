@@ -58,7 +58,7 @@ Host controller
 Host compute1
    Hostname compute1
    User cephadm
-Host compute02
+Host compute2
    Hostname compute2
    User cephadm
 Host monitor
