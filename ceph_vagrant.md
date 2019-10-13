@@ -22,7 +22,7 @@ ntpdate europe.pool.ntp.org
 systemctl start ntpd
 systemctl enable ntpd
 
-useradd cephadm && echo "CephAdm@123#" | passwd --stdin cephadm
+useradd cephx && echo "CephAdm@123#" | passwd --stdin cephadm
 echo "cephadm ALL = (root) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/cephadm
 chmod 0440 /etc/sudoers.d/cephadm
 sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
@@ -54,16 +54,16 @@ for host in controller compute1 compute2 monitor ; do ssh-copy-id -i ~/.ssh/id_r
 sudo tee -a ~/.ssh/config << EOF
 Host controller
    Hostname controller
-   User cephadm
+   User cephx
 Host compute1
    Hostname compute1
-   User cephadm
+   User cephx
 Host compute2
    Hostname compute2
-   User cephadm
+   User cephx
 Host monitor
    Hostname monitor
-   User cephadm
+   User cephx
 
 EOF
 
