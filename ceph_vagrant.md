@@ -8,7 +8,7 @@
 #!/bin/bash
 
 yum update -y
-yum install -y git nano ntp ntpdate ntp-doc python python-pip parted
+yum install -y git nano ntp ntpdate ntp-doc python python-pip parted net-tools git
 
 sudo tee -a /etc/hosts << EOF
 172.42.42.100    controller
