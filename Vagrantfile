@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
     controller.vm.network "public_network",
       use_dhcp_assigned_default_route: true
     controller.vm.network "private_network", ip: "172.42.42.100"
-    controller.provision "shell", path: "script.sh"
+    controller.vm.provision "shell", path: "script.sh"
     controller.vm.provider "virtualbox" do |v|
       v.name = "controller"
       v.memory = 2048
@@ -28,7 +28,7 @@ Vagrant.configure(2) do |config|
       workernode.vm.network "public_network",
         use_dhcp_assigned_default_route: true
       workernode.vm.network "private_network", ip: "172.42.42.10#{i}"
-      workernode.provision "shell", path: "script.sh"
+      workernode.vm.provision "shell", path: "script.sh"
       workernode.vm.provider "virtualbox" do |v|
         v.name = "compute#{i}"
         v.memory = 1024
@@ -43,7 +43,7 @@ Vagrant.configure(2) do |config|
     monitor.vm.network "public_network",
       use_dhcp_assigned_default_route: true
     monitor.vm.network "private_network", ip: "172.42.42.103"
-    monitor.provision "shell", path: "script.sh"
+    monitor.vm.provision "shell", path: "script.sh"
     monitor.vm.provider "virtualbox" do |v|
       v.name = "monitor"
       v.memory = 1024
